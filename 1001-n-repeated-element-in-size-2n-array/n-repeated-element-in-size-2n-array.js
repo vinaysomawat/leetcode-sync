@@ -3,9 +3,11 @@
  * @return {number}
  */
 var repeatedNTimes = function(nums) {
-    let obj = {};
-    for(let item of nums) {
-        obj[item] = obj[item] ? obj[item]+1 : 1;
-        if(obj[item] == nums.length/2) return item;
+    const freq = new Map();
+    const target = nums.length / 2;
+
+    for (const num of nums) {
+        freq.set(num, (freq.get(num) || 0) + 1);
+        if (freq.get(num) === target) return num;
     }
 };
