@@ -4,8 +4,8 @@
  */
 var repeatedNTimes = function(nums) {
     let obj = {};
-    for(let i=0;i<nums.length;i++) {
-        obj[nums[i]] = obj[nums[i]] ? obj[nums[i]]+1 : 1;
-        if(obj[nums[i]] == nums.length/2) return nums[i];
+    for(let item of nums) {
+        obj[item] = obj[item] ? obj[item]+1 : 1;
+        if(obj[item] == nums.length/2) return item;
     }
 };
