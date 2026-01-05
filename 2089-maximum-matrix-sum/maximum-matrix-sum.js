@@ -1,18 +1,17 @@
-/**
- * @param {number[][]} matrix
- * @return {number}
- */
 var maxMatrixSum = function(matrix) {
-    let count = 0;
-    let min = Infinity;
-    let sum=0;
-    matrix.forEach(item => {
-        item.forEach(temp => {
-            if(temp<0) count++;
-            min = Math.min(min, Math.abs(temp));
-            sum += Math.abs(temp);
-        })
-    });
-    if(count%2==0) return sum;
-    else return sum-2*min;
+    let neg = 0;
+    let minAbs = Infinity;
+    let sum = 0;
+
+    for (let i = 0; i < matrix.length; i++) {
+        for (let j = 0; j < matrix[i].length; j++) {
+            const v = matrix[i][j];
+            if (v < 0) neg++;
+            const abs = v < 0 ? -v : v;   // faster than Math.abs
+            sum += abs;
+            if (abs < minAbs) minAbs = abs;
+        }
+    }
+
+    return (neg & 1) === 0 ? sum : sum - (minAbs << 1);
 };
