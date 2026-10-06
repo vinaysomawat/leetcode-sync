@@ -3,18 +3,18 @@
  * @return {number}
  */
 var minAddToMakeValid = function(s) {
-    let arr = [];
-    let temp = [];
+    let arr = 0;
+    let temp = 0;
     for(let i=0;i<s.length;i++) {
         if(s[i]=='(') {
-            arr.push('(');
+            arr++;
         } else {
-            if(arr[arr.length-1] == '(') {
-                arr.pop();
+            if(arr>0) {
+                arr--;
             } else {
-                temp.push(')');
+                temp++;
             }
         }
     }
-    return arr.length+temp.length;
+    return arr+temp;
 };
