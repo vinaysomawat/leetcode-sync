@@ -3,7 +3,6 @@
  * @return {number}
  */
 var minAddToMakeValid = function(s) {
-    let count = 0;
     let arr = [];
     let temp = [];
     for(let i=0;i<s.length;i++) {
