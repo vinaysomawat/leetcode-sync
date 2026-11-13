@@ -4,17 +4,18 @@
  */
 var nextGreaterElements = function(nums) {
     let stack = [];
-    let result = Array.from({length: nums.length}).fill(-1);
+    const n = nums.length;
+    const result = new Array(n).fill(-1);
 
     for(let i=0;i<2*nums.length-1;i++) {
-        let index = i%nums.length;
+        let index = i%n;
 
         while(stack.length && nums[stack[stack.length-1]]<nums[index]) {
             let prevIndex = stack.pop();
             result[prevIndex] = nums[index];
         }
 
-        if(i<nums.length) {
+        if(i<n) {
             stack.push(i);
         }
     }
